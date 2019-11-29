@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TPLivros.View.Livro.NovoLivroView">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" x:Name="btnSalvar" Command="{Binding OnAdicionarLivroCMD}" 
+                     CommandParameter="{Binding BindingContext, Source={x:Reference Name=rootLivro}}" Order="Primary" Priority="1" />
+        <ToolbarItem Text="Cancelar" x:Name="btnCancelar" Command="{Binding OnSairCMD}" Order="Primary" Priority="2" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="rootLivro" Padding="7" BindingContext="{Binding Selecionado}">
+            <Entry x:Name="txtNome" Placeholder="Nome" Text="{Binding Nome}" />
+            <Entry x:Name="txtISBN" Placeholder="ISBN" Text="{Binding ISBN}" />
+            <Entry x:Name="txtNomeAutor" Placeholder="Nome do Autor" Text="{Binding NomeAutor}" />
+            <Entry x:Name="txtEmailAutor" Placeholder="E-mail do Autor" Text="{Binding EmailAutor}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
