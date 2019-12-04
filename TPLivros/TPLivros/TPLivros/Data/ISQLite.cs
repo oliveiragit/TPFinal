@@ -2,7 +2,7 @@
 
 namespace TPLivros.Data
 {
-    public interface IDependencyServiceSQLite
+    public interface ISQLite
     {
         SQLiteConnection GetConexao();
     }

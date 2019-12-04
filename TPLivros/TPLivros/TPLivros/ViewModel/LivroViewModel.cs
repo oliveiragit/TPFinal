@@ -130,6 +130,11 @@ namespace TPLivros.ViewModel {
                             "Falhou", "Desculpe, ocorreu um erro inesperado =(", "OK");
             }
         }
+        public async void Detalhes()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(
+                new View.Livro.DetalheLivroView() { BindingContext = App.LivroVM });
+        }
 
         private async void OnSair()
         {
@@ -151,6 +156,7 @@ namespace TPLivros.ViewModel {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+      
     }
 
     public class OnAdicionarLivroCMD : ICommand
@@ -201,5 +207,22 @@ namespace TPLivros.ViewModel {
             App.LivroVM.Selecionado = parameter as Livro;
             livroVM.Remover();
         }
+        public class OnDetalhes : ICommand
+        {
+            private LivroViewModel livroVM;
+            public OnDetalhes(LivroViewModel paramVM)
+            {
+                livroVM = paramVM;
+            }
+            public event EventHandler CanExecuteChanged;
+            public void EditarCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+            public bool CanExecute(object parameter) => (parameter != null);
+            public void Execute(object parameter)
+            {
+                App.LivroVM.Selecionado = parameter as Livro;
+                livroVM.Detalhes();
+            }
+        }
+       
     }
 }

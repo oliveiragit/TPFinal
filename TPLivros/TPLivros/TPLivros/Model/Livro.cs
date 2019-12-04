@@ -30,7 +30,7 @@ namespace TPLivros.Model
             {
                 if (database == null)
                 {
-                    database = DependencyService.Get<IDependencyServiceSQLite>().GetConexao();
+                    database = DependencyService.Get<ISQLite>().GetConexao();
                     database.CreateTable<Livro>();
                 }
                 return instance;

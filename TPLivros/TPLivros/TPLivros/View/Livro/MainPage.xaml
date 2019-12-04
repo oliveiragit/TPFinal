@@ -6,7 +6,7 @@
              Title="Notas" x:Name="pageNotas">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Adicionar" x:Name="btnAddAluno" Command="{Binding OnNovoCMD}" Order="Primary" Priority="1" />        
+        <ToolbarItem Text="Adicionar" x:Name="btnAddLivro" Command="{Binding OnNovoCMD}" Order="Primary" Priority="1" />        
         <ToolbarItem Text="Sair" x:Name="btnSair" Command="{Binding OnSairCMD}" Order="Secondary" Priority="1" />
     </ContentPage.ToolbarItems>
 
@@ -19,24 +19,27 @@
 
             <StackLayout x:Name="layPesquisa" Grid.Row="0" Padding="5">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                    <Label Text="Bem-vindo, " FontSize="15"/>
+                    <Label Text="TP Final Xamarin Forms" FontSize="15"/>
                     <Label Text="{Binding Nome}" FontSize="15" FontAttributes="Bold" />
                 </StackLayout>
                 <SearchBar Placeholder="Pesquisar por nome" Text="{Binding PesquisaPorNome}" />
             </StackLayout>
 
             <StackLayout x:Name="layLista" Grid.Row="1" Padding="7">
-                <ListView x:Name="lstAlunos" ItemsSource="{Binding Alunos}"                           
+                <ListView x:Name="lstLivros" ItemsSource="{Binding Livros}"                           
                           SelectedItem="{Binding Selecionado, Mode=TwoWay}" RowHeight="55">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.ContextActions>
+                                    <MenuItem Text="Detalhes" IsDestructive="False"
+                                              Command="{Binding BindingContext.OnDetalhes, Source={x:Reference pageNotas}}"
+                                              CommandParameter="{Binding .}" />
                                     <MenuItem Text="Remover" IsDestructive="True"
-                                              Command="{Binding BindingContext.OnDeleteAlunoCMD, Source={x:Reference pageNotas}}" 
+                                              Command="{Binding BindingContext.OnDeleteLivroCMD, Source={x:Reference pageNotas}}" 
                                               CommandParameter="{Binding .}" />
                                     <MenuItem Text="Editar" IsDestructive="False"
-                                              Command="{Binding BindingContext.OnEditarAlunoCMD, Source={x:Reference pageNotas}}"
+                                              Command="{Binding BindingContext.OnEditarLivroCMD, Source={x:Reference pageNotas}}"
                                               CommandParameter="{Binding .}" />
                                 </ViewCell.ContextActions>
                                 <StackLayout Padding="5,0,5,0">
@@ -46,9 +49,7 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-
-                                        <Label Grid.Column="0" Text="{Binding RM}" Font="12" HorizontalOptions="Start" />
-                                        <Label Grid.Column="1" Text="{Binding IsAprovado}" Font="12" HorizontalOptions="End" />
+                                        <Label Grid.Column="0" Text="{Binding NomeAutor}" Font="12" HorizontalOptions="Start" />
                                     </Grid>
                                 </StackLayout>
                             </ViewCell>

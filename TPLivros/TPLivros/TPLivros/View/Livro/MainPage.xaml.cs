@@ -21,6 +21,6 @@ namespace TPLivros.View.Livro
         {
             base.OnAppearing();
             App.LivroVM.Carregar();
-        }                    
+        }
     }
 }
