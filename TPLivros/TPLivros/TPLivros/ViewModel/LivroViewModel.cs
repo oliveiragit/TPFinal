@@ -52,6 +52,7 @@ namespace TPLivros.ViewModel {
         public OnAdicionarLivroCMD OnAdicionarLivroCMD { get; }
         public OnEditarLivroCMD OnEditarLivroCMD { get; }
         public OnDeleteLivroCMD OnDeleteLivroCMD { get; }
+        public OnDetalhes OnDetalhes { get; }
         public ICommand OnSairCMD { get; private set; }
         public ICommand OnNovoCMD { get; private set; }
 
@@ -64,6 +65,7 @@ namespace TPLivros.ViewModel {
             OnAdicionarLivroCMD = new OnAdicionarLivroCMD(this);
             OnEditarLivroCMD = new OnEditarLivroCMD(this);
             OnDeleteLivroCMD = new OnDeleteLivroCMD(this);
+            OnDetalhes = new OnDetalhes(this);
             OnSairCMD = new Command(OnSair);
             OnNovoCMD = new Command(OnNovo);
 
@@ -207,22 +209,21 @@ namespace TPLivros.ViewModel {
             App.LivroVM.Selecionado = parameter as Livro;
             livroVM.Remover();
         }
-        public class OnDetalhes : ICommand
+    }
+    public class OnDetalhes : ICommand
+    {
+        private LivroViewModel livroVM;
+        public OnDetalhes(LivroViewModel paramVM)
         {
-            private LivroViewModel livroVM;
-            public OnDetalhes(LivroViewModel paramVM)
-            {
-                livroVM = paramVM;
-            }
-            public event EventHandler CanExecuteChanged;
-            public void EditarCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-            public bool CanExecute(object parameter) => (parameter != null);
-            public void Execute(object parameter)
-            {
-                App.LivroVM.Selecionado = parameter as Livro;
-                livroVM.Detalhes();
-            }
+            livroVM = paramVM;
         }
-       
+        public event EventHandler CanExecuteChanged;
+        public void EditarCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        public bool CanExecute(object parameter) => (parameter != null);
+        public void Execute(object parameter)
+        {
+            App.LivroVM.Selecionado = parameter as Livro;
+            livroVM.Detalhes();
+        }
     }
 }

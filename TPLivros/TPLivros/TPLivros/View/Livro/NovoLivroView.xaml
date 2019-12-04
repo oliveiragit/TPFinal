@@ -11,10 +11,14 @@
 
     <ContentPage.Content>
         <StackLayout x:Name="rootLivro" Padding="7" BindingContext="{Binding Selecionado}">
+            <Label Text= "Nome" />
             <Entry x:Name="txtNome" Placeholder="Nome" Text="{Binding Nome}" />
+            <Label Text= "ISBN"/>
             <Entry x:Name="txtISBN" Placeholder="ISBN" Text="{Binding ISBN}" />
+            <Label Text="Nome do Autor" />
             <Entry x:Name="txtNomeAutor" Placeholder="Nome do Autor" Text="{Binding NomeAutor}" />
-            <Entry x:Name="txtEmailAutor" Placeholder="E-mail do Autor" Text="{Binding EmailAutor}" />
+            <Label Text="Email do Autor" />
+            <Entry x:Name="txtEmailAutor" Placeholder="autor@email.com" Text="{Binding EmailAutor}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

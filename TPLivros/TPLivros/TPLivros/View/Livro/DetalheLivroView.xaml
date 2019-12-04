@@ -3,19 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TPLivros.View.Livro.DetalheLivroView">
     <ContentPage.Content>
-        <ContentPage.ToolbarItems>
-            <ToolbarItem Text="Salvar" x:Name="btnSalvar" Command="{Binding OnAdicionarLivroCMD}" 
-                     CommandParameter="{Binding BindingContext, Source={x:Reference Name=rootLivro}}" Order="Primary" Priority="1" />
-            <ToolbarItem Text="Cancelar" x:Name="btnCancelar" Command="{Binding OnSairCMD}" Order="Primary" Priority="2" />
-        </ContentPage.ToolbarItems>
-
-        <ContentPage.Content>
-            <StackLayout x:Name="rootLivro" Padding="7" BindingContext="{Binding Selecionado}">
-                <Label x:Name="txtNome"  Text="{Binding Nome}" />
-                <Label x:Name="txtISBN"  Text="{Binding ISBN}" />
-                <Label x:Name="txtNomeAutor"  Text="{Binding NomeAutor}" />
-                <Label x:Name="txtEmailAutor" Text="{Binding EmailAutor}" />
-            </StackLayout>
-        </ContentPage.Content>
+        <StackLayout x:Name="rootLivro" Padding="7" BindingContext="{Binding Selecionado}">
+            <Label Text="{Binding Nome}" />
+            <Label Text="{Binding ISBN}" />
+            <Label Text="{Binding NomeAutor}" />
+            <Label Text="{Binding EmailAutor}" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
