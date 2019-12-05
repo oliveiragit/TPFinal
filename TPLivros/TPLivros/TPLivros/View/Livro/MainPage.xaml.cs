@@ -22,5 +22,11 @@ namespace TPLivros.View.Livro
             base.OnAppearing();
             App.LivroVM.Carregar();
         }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TPLivros.View.Creditos.Creditos());
+        }
+
     }
 }

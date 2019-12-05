@@ -4,9 +4,12 @@
              x:Class="TPLivros.View.Livro.DetalheLivroView">
     <ContentPage.Content>
         <StackLayout x:Name="rootLivro" Padding="7" BindingContext="{Binding Selecionado}">
-            <Label Text="{Binding Nome}" />
+            <Label HorizontalTextAlignment="Center" FontSize="Large" Text="{Binding Nome}" />
+            <Label Text="ISBN: "/>
             <Label Text="{Binding ISBN}" />
+            <Label Text="Nome do Autor: "/>
             <Label Text="{Binding NomeAutor}" />
+            <Label Text="Email do Autor: "/>
             <Label Text="{Binding EmailAutor}" />
         </StackLayout>
     </ContentPage.Content>
